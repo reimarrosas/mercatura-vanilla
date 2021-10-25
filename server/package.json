@@ -1,0 +1,28 @@
+{
+  "name": "mercatura-server",
+  "version": "1.0.0",
+  "description": "API for the Mercatura E-Commerce Website",
+  "main": "dist/app.js",
+  "repository": "https://github.com/reimarrosas/mercatura.git",
+  "author": "Reimar Rosas",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "stripe": "^8.184.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.5",
+    "@types/node": "^16.11.5",
+    "@types/pg": "^8.6.1",
+    "@types/supertest": "^2.0.11",
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
+  }
+}
