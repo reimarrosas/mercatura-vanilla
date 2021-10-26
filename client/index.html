@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="Mercatura is an E-Commerce App that primarily sells everyday products.">
+  <meta name="keywords" content="E-Commerce, Store, Shop, Home">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Sanitize CSS Reset -->
   <link
@@ -25,10 +26,12 @@
     <div class="container__limiter container__header">
       <nav class="mercatura__main">
       </nav>
-      <h1 class="mercatura__title">Mercatura</h1>
+      <a href="">
+        <h1 class="mercatura__title">Mercatura</h1>
+      </a>
       <form action="" class="mercatura__search">
-        <input type="text" name="search_query" id="search_query">
-        <button type="submit" class="btn btn--submit">Search</button>
+        <input type="text" name="search_query" id="search_query" placeholder="Search...">
+        <input type="submit" value="submit" style="display:none">
       </form>
       <a href="login.html" class="local-link login-link">Login</a>
       <a href="cart.html" class="local-link cart-link">
@@ -50,6 +53,9 @@
       </h1>
       <p class="hero__desc">
         {HERO DESCRIPTION HERE}
+        <button class="btn btn--call-to-action">
+          <a href="store.html">Shop now!</a>
+        </button>
       </p>
     </div>
     <div class="container__img hero__image">
@@ -101,5 +107,6 @@
       </p>
     </address>
   </footer>
+
 </body>
 </html>
