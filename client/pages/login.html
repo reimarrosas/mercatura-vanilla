@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mercatura is an E-Commerce App that primarily sells everyday products.">
+  <meta name="keywords" content="E-Commerce, Store, Shop, Home">
+  <!-- Sanitize CSS Reset -->
+  <link
+    href="https://unpkg.com/sanitize.css"
+    rel="stylesheet"
+  />
+  <!-- Sanitize CSS Forms Reset -->
+  <link
+    href="https://unpkg.com/sanitize.css/forms.css"
+    rel="stylesheet"
+  />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../styles/login.html">
+  <title>Mercatura | Login</title>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="mercatura__header">
+    <div class="container__limiter container__header">
+      <nav class="mercatura__main">
+      </nav>
+      <a href="../">
+        <h1 class="mercatura__title">Mercatura</h1>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <section class="login">
+      <h1 class="login__title title">Login</h1>
+      <form action="" class="login-page__form login-form form">
+        <label for="login-email" class="login-form__label form__label">Enter your email: </label>
+        <input
+          type="email"
+          name="login-email"
+          id="login-email"
+          placeholder="Enter your email..."
+          aria-label="Login Email"
+        >
+        <label for="login-pw" class="login-form__label form__label">Enter your password: </label>
+        <input
+          type="password"
+          name="login-pw"
+          id="login-pw"
+          placeholder="Enter your password..."
+          aria-label="Login Password"
+        >
+        <input type="submit" value="Login">
+      </form>
+    </section>
+    <section class="signup">
+      <h1 class="signup__title">Signup</h1>
+      <form action="" class="login-page__form signup-form form">
+        <label for="signup-email" class="signup-form__label form__label">Enter your email: </label>
+        <input
+          type="email"
+          name="signup-email"
+          id="signup-email"
+          placeholder="someone@example.com"
+          aria-label="Signup Email"
+        >
+        <label for="signup-pw" class="signup-form__label form__label">Enter your password: </label>
+        <input type="password" name="signup-pw" id="signup-pw" placeholder="Enter your password..." aria-label="Signup Password">
+        <label for="signup-pw" class="signup-form__label form__label">Confirm your password: </label>
+        <input type="password" name="confirm-signup-pw" id="confirm-signup-pw" placeholder="Confirm your password..." aria-label="Confirm Signup Password">
+        <input type="submit" value="Login">
+      </form>
+    </section>
+  </main>
+ 
+  <!-- FOOTER -->
+  <footer class="mercatura__footer">
+    <address class="mercatura__address">
+      <a href="mailto:mercatura@example.com">mercatura@example.com</a><br>
+      <a href="tel:+15555555555">+1 (555) 555 - 5555</a>
+      <p class="mercatura__mailing-address">
+        123 Example Rd.<br>
+        Example, Montreal<br>
+        QC, Canada, H1A 0A1
+      </p>
+    </address>
+  </footer>
+
+</body>
+</html>
