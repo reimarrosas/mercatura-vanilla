@@ -21,6 +21,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--color-dark);
+  font-size: clamp(0.8rem, 2vmin, 1.5rem);
 }
 
 section {
@@ -45,13 +46,18 @@ a:visited {
   background-color: var(--color-light);
 }
 
+.absolute-limiter {
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
 .container__limiter {
   max-width: 948px;
   margin: 0 auto;
 }
 
 .section__title {
-  font-size: clamp(1.2rem, 1.5rem, 2rem);
+  font-size: clamp(1.2rem, 3vmin, 2rem);
   font-weight: 500;
 }
 
