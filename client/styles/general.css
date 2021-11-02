@@ -1,0 +1,87 @@
+@import url(fonts.css);
+
+/* === General === */
+
+:root {
+    --main-color: #0c3a66;
+    --bg-color: #d1ccdc;
+    --color-light: #f6eef1;
+    --color-dark: #605c4e;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 100;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container__limiter {
+    max-width: 948px;
+    margin: 0 auto;
+}
+
+/* === Header Specific === */
+
+.mercatura__header {
+    background-color: var(--main-color);
+    color: var(--color-light);
+}
+
+.container__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1.5rem 0;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.mercatura__title {
+    font-weight: 700;
+}
+
+.mercatura__search {
+    width: 40%;
+}
+
+.mercatura__search * {
+    width: 100%;
+}
+
+#search_query {
+    border: 1px solid var(--color-light);
+}
+
+#search_query:focus {
+    outline: none;
+}
+
+/* === Footer Specific === */
+
+.mercatura__footer {
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    background-color: var(--main-color);
+    color: var(--color-light);
+}
+
+.container__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
