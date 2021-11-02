@@ -6,17 +6,31 @@
     --main-color: #0c3a66;
     --bg-color: #d1ccdc;
     --color-light: #f6eef1;
-    --color-dark: #605c4e;
+    --color-hl: #605c4e;
+    --color-dark: #2b2b2b;
 }
 
 *, *::before, *::after {
     margin: 0;
     font-family: "Montserrat", sans-serif;
-    font-weight: 100;
+    font-weight: 200;
 }
 
 body {
     background-color: var(--bg-color);
+    color: var(--color-dark);
+}
+
+section {
+    border-color: var(--color-hl);
+    border-style: solid;
+    border-inline-width: 2px;
+    border-block-width: 1px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 a:link, a:visited {
@@ -24,9 +38,18 @@ a:link, a:visited {
     color: inherit;
 }
 
+.body-color {
+    background-color: var(--color-light);
+}
+
 .container__limiter {
     max-width: 948px;
     margin: 0 auto;
+}
+
+.section__title {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 500;
 }
 
 /* === Header Specific === */
