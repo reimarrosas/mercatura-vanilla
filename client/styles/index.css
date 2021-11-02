@@ -1,1 +1,44 @@
 @import url(general.css);
+
+/* === Hero Section === */
+
+.hero {
+    padding: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3em;
+}
+
+.hero > * {
+    flex: 0 1 50%;
+}
+
+.hero__desc {
+    margin: 1em 0;
+}
+
+.hero__image {
+    max-width: 450px;
+}
+
+.hero__image > img {
+    width: 100%;
+}
+
+/* === Category Section === */
+
+.categories {
+    padding: 3rem 0;
+}
+
+.categories__title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.categories__card-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
