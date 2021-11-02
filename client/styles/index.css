@@ -3,42 +3,55 @@
 /* === Hero Section === */
 
 .hero {
-    padding: 4em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3em;
+  padding: 5em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2.5em;
+  flex-wrap: wrap;
 }
 
 .hero > * {
-    flex: 0 1 50%;
+  flex: 1 0;
 }
 
 .hero__desc {
-    margin: 1em 0;
+  margin: 1em 0;
+  min-width: 300px;
 }
 
 .hero__image {
-    max-width: 450px;
+  min-width: 300px;
 }
 
 .hero__image > img {
-    width: 100%;
+  width: 100%;
 }
 
 /* === Category Section === */
 
 .categories {
-    padding: 3rem 0;
+  padding: 3rem 0;
 }
 
 .categories__title {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .categories__card-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5em;
+}
+
+.categories__card {
+  min-width: 300px;
+  min-height: 300px;
+  text-align: center;
+
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
 }
