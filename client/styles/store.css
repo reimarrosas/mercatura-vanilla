@@ -1,1 +1,30 @@
 @import url(general.css);
+
+.carousel {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.carousel img {
+  height: 400px;
+  width: 1440px;
+  display: none;
+}
+
+#carousel-show {
+  display: inline;
+}
+
+.fade {
+  animation: fadeIn 1500ms;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
