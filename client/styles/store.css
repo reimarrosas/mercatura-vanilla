@@ -1,7 +1,9 @@
 @import url(general.css);
 
+/* Banner */
+
 .carousel {
-  margin: 2rem 0;
+  margin: 1rem 0;
   text-align: center;
 }
 
@@ -27,4 +29,26 @@
   to {
     opacity: 1;
   }
+}
+
+/* Custom Content */
+
+.custom-content {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.custom-content section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-content h1 {
+  font-size: 2rem;
+}
+
+.custom-content .btn__container {
+  margin-top: auto;
 }
