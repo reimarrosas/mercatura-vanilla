@@ -24,13 +24,6 @@ body {
   font-size: clamp(0.8rem, 2vmin, 1.5rem);
 }
 
-section {
-  border-color: var(--color-hl);
-  border-style: solid;
-  border-inline-width: 2px;
-  border-block-width: 1px;
-}
-
 ul {
   list-style: none;
   padding: 0;
