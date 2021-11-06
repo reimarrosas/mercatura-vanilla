@@ -93,6 +93,7 @@ a:visited {
   display: flex;
   align-items: center;
   gap: 1em;
+  margin-right: 0.8em;
 }
 
 .mercatura__title {
