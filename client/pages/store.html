@@ -33,8 +33,8 @@
         <input type="submit" value="submit" style="display: none" />
       </form>
       <div class="group">
-        <a href="pages/login.html" class="local-link login-link">Login</a>
-        <a href="pages/checkout.html" class="local-link cart-link">
+        <a href="login.html" class="local-link login-link">Login</a>
+        <a href="checkout.html" class="local-link cart-link">
           <div class="container__img">
             <img src="../resources/images/shopping_cart.svg" alt="Shopping Cart Icon." />
           </div>
@@ -52,14 +52,14 @@
   </section>
 
   <!-- CUSTOM CONTENT -->
-  <section class="custom-content">
+  <section class="custom-content container__limiter">
     <section class="greeting">
       <h1 class="greeting__title">
         Hello, <span class="greeting__user">Guest</span>
       </h1>
-      <h2 class="greeting__user-creation">
+      <p class="greeting__user-creation">
         Customer since <span class="user-since">2021</span>
-      </h2>
+      </p>
     </section>
     <section class="recent-product">
       <h1 class="recent-product__title">
@@ -68,14 +68,14 @@
       <div class="container__image recent-product__image">
         <img src="" alt="Most recent product seen.">
       </div>
-      <div class="cost-buy">
-        <span class="cost-buy__cost">$0.00</span>
+      <span class="cost-buy__cost">$0.00</span>
+      <div class="btn__container">
         <button class="btn btn--buy">Buy again</button>
       </div>
     </section>
     <section class="related-product">
       <h1 class="related-product__title">
-        Related to your searches
+        Relevant Product
       </h1>
       <div class="container__image related-product__image">
         <img src="" alt="Related product to what you searched.">
@@ -84,8 +84,8 @@
         Sample Related
       </h2>
 
-      <div class="cost-buy">
-        <span class="cost-buy__cost">$0.00</span>
+      <span class="cost-buy__cost">$0.00</span>
+      <div class="btn__container">
         <button class="btn btn--buy">Buy</button>
       </div>
     </section>
@@ -94,6 +94,7 @@
   <!-- RECOMMENDATIONS -->
   <section class="recommendations">
     <ul class="recommendations__list">
+      <!-- === HIT THE API HERE === -->
     </ul>
   </section>
 
