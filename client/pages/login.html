@@ -12,6 +12,7 @@
   <link href="https://unpkg.com/sanitize.css/forms.css" rel="stylesheet" />
   <!-- Custom Styles -->
   <link rel="stylesheet" href="../styles/login.css">
+  <link rel="shortcut icon" href="../resources/images/favicon.svg" type="image/x-icon">
   <title>Mercatura | Login</title>
 </head>
 
@@ -42,32 +43,47 @@
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="main-content">
+  <main class="main-content container__limiter">
     <section class="login">
       <h1 class="login__title title">Login</h1>
       <form action="" class="login-page__form login-form form">
-        <label for="login-email" class="login-form__label form__label">Enter your email: </label>
-        <input type="email" name="login-email" id="login-email" placeholder="Enter your email..."
-          aria-label="Login Email">
-        <label for="login-pw" class="login-form__label form__label">Enter your password: </label>
-        <input type="password" name="login-pw" id="login-pw" placeholder="Enter your password..."
-          aria-label="Login Password">
-        <input type="submit" value="Login">
+        <div class="form-group">
+          <label for="login-email" class="login-form__label form__label">Enter your email: </label>
+          <br>
+          <input type="email" name="login-email" id="login-email" placeholder="Enter your email..."
+            aria-label="Login Email" required>
+        </div>
+        <div class="form-group">
+          <label for="login-pw" class="login-form__label form__label">Enter your password: </label>
+          <br>
+          <input type="password" name="login-pw" id="login-pw" placeholder="Enter your password..."
+            aria-label="Login Password" required>
+        </div>
+        <input class="btn" type="submit" value="Login">
       </form>
     </section>
     <section class="signup">
       <h1 class="signup__title">Signup</h1>
       <form action="" class="login-page__form signup-form form">
-        <label for="signup-email" class="signup-form__label form__label">Enter your email: </label>
-        <input type="email" name="signup-email" id="signup-email" placeholder="someone@example.com"
-          aria-label="Signup Email">
-        <label for="signup-pw" class="signup-form__label form__label">Enter your password: </label>
-        <input type="password" name="signup-pw" id="signup-pw" placeholder="Enter your password..."
-          aria-label="Signup Password">
-        <label for="signup-pw" class="signup-form__label form__label">Confirm your password: </label>
-        <input type="password" name="confirm-signup-pw" id="confirm-signup-pw" placeholder="Confirm your password..."
-          aria-label="Confirm Signup Password">
-        <input type="submit" value="Login">
+        <div class="form-group">
+          <label for="signup-email" class="signup-form__label form__label">Enter your email: </label>
+          <br>
+          <input type="email" name="signup-email" id="signup-email" placeholder="someone@example.com"
+            aria-label="Signup Email" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-pw" class="signup-form__label form__label">Enter your password: </label>
+          <br>
+          <input type="password" name="signup-pw" id="signup-pw" placeholder="Enter your password..."
+            aria-label="Signup Password" required minlength="6">
+        </div>
+        <div class="form-group">
+          <label for="signup-pw" class="signup-form__label form__label">Confirm your password: </label>
+          <br>
+          <input type="password" name="confirm-signup-pw" id="confirm-signup-pw" placeholder="Confirm your password..."
+            aria-label="Confirm Signup Password" required>
+        </div>
+        <input class="btn" type="submit" value="Login">
       </form>
     </section>
   </main>
@@ -89,6 +105,7 @@
           Reimar Rosas
         </a>
       </small>
+    </div>
   </footer>
 
 </body>
