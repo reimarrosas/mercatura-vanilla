@@ -70,6 +70,10 @@ a:visited {
   border-radius: 5px;
 }
 
+.btn__container {
+  margin: 1rem 0;
+}
+
 /* === Header Specific === */
 
 .mercatura__header {
