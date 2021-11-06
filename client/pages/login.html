@@ -21,7 +21,7 @@
   <!-- HEADER -->
   <header class="mercatura__header">
     <div class="container__limiter container__header">
-      <div class="group">
+      <div class="header-group">
         <nav class="mercatura__main"></nav>
         <a href="../" class="mercatura__title--link">
           <h1 class="mercatura__title">Mercatura</h1>
@@ -31,16 +31,40 @@
         <input type="text" name="search_query" id="search_query" placeholder="Search..." />
         <input type="submit" value="submit" style="display: none" />
       </form>
-      <div class="group">
-        <a href="login.html" class="local-link login-link">Login</a>
-        <a href="checkout.html" class="local-link cart-link">
-          <div class="container__img">
-            <img src="../resources/images/shopping_cart.svg" alt="Shopping Cart Icon." />
-          </div>
-        </a>
+      <div class="header-group">
+        <a href="pages/login.html" class="local-link login-link">Login</a>
+        <button class="clear-button">
+          <img src="../resources/images/shopping_cart.svg" alt="Shopping Cart Icon." />
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Cart -->
+  <section id="cart" class="cart">
+    <button class="clear-button">
+      <img src="../resources/images/close_button.svg" alt="Close button.">
+    </button>
+    <h1 class="cart__title">Your Cart</h1>
+    <ul class="cart__item-list">
+      <li class="cart__item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, corporis?</li>
+      <li class="cart__item">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, praesentium!</li>
+      <li class="cart__item">Lore ipsum dolor sit amet consectetur adipisicing elit. Odio, nesciunt.</li>
+    </ul>
+    <div class="cart__total--container">
+      <span class="cart__total">Your total : $ <span class="cart__price">200</span></span>
+    </div>
+    <div class="cart__action-group">
+      <a href="./pages/checkout.html" class="cart__checkout-link">
+        <button class="cart__action cart__checkout">
+          Checkout
+        </button>
+      </a>
+      <button class="cart__action cart__clear">
+        Clear Cart
+      </button>
+    </div>
+  </section>
 
   <!-- MAIN CONTENT -->
   <main class="main-content container__limiter">
@@ -118,5 +142,6 @@
 </body>
 
 <script src="../scripts/login.js" defer></script>
+<script src="../scripts/general.js" defer></script>
 
 </html>
