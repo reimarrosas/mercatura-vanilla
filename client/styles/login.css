@@ -1,1 +1,36 @@
 @import url(general.css);
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body > * {
+  flex: 0 0;
+}
+
+.main-content {
+  margin-block: 3rem;
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.main-content section {
+  min-width: 189px;
+  margin: 0 auto;
+}
+
+.form-group + .form-group {
+  margin-top: 1rem;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.form-group > input {
+  margin-top: 0.5rem;
+}
