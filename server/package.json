@@ -24,6 +24,13 @@
     "@types/pg": "^8.6.1",
     "@types/supertest": "^2.0.11",
     "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
     "supertest": "^6.1.6"
+  },
+  "scripts": {
+    "dev": "nodemon dist/app.js",
+    "compile": "tsc",
+    "start": "node dist/app.js",
+    "watch": "tsc --watch"
   }
 }
