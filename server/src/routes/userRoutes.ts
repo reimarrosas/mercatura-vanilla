@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 
 import { createUser } from '../controllers/userController';
+import checkForExistingUser from '../services/checkForExistingUser';
 import hashPassword from '../services/hashPassword';
 import validateUserCreds from '../services/validateUserCreds';
 import { IUser } from '../utils/types';
@@ -12,6 +13,7 @@ router.post('/signup', async (req: Request, res: Response, next: NextFunction) =
 
   try {
     await validateUserCreds(credentials)
+    await checkForExistingUser(credentials);
     const hashedUser: IUser = await hashPassword(credentials);
     await createUser(hashedUser);
   } catch (err: any) {
