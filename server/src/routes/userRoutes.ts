@@ -13,7 +13,7 @@ router.post('/signup', async (req: Request, res: Response, next: NextFunction) =
   const credentials: IUser = req.body;
 
   try {
-    const validatedUser: IUser = await validateUserCreds(credentials, userValidator);
+    const validatedUser: IUser = await validateUserCreds<IUser>(credentials, userValidator);
     await checkForExistingUser(validatedUser);
     const hashedUser: IUser = await hashPassword(validatedUser);
     await createUser(hashedUser);

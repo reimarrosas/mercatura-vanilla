@@ -3,9 +3,9 @@ import { IHttpError, IUser, Maybe } from "../utils/types";
 import userValidator from "./schemaValidators/userValidator";
 import joi from 'joi';
 
-export default async (user: IUser, validator: joi.AnySchema): Promise<IUser> => {
+export default async <T extends Object>(user: T, validator: joi.AnySchema): Promise<T> => {
   try {
-    const value: IUser = await validator.validateAsync(user);
+    const value: T = await validator.validateAsync(user);
 
     return value;
   } catch (err: any) {
