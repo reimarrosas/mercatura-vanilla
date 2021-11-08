@@ -11,4 +11,8 @@ export default class HttpError implements IHttpError {
     this.message = message;
     this.stack = stack;
   }
+
+  public toString(): string {
+    return this.message;
+  }
 }
