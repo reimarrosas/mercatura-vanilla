@@ -5,7 +5,7 @@ import { IHttpError, IUser, Maybe } from "../utils/types";
 export async function createUser(user: IUser): Promise<Maybe<IHttpError>> {
   try {
     await db.none(`
-      INSERT INTO USERS (NAME, EMAIL, PASSWORD)
+      INSERT INTO USERS (USER_NAME, USER_EMAIL, USER_PASSWORD)
       VALUES ($<name>, $<email>, $<password>);
     `, user);
   } catch(err: any) {
