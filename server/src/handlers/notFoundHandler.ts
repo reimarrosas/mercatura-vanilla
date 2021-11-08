@@ -6,6 +6,6 @@ export default (req: Request, _res: Response, next: NextFunction) => {
     404,
     "Not Found",
     `${req.originalUrl} not found!`,
-    `Method: ${req.method}, URL: ${req.originalUrl}`)
+    `Method: ${req.method}, URL: ${req.originalUrl}, Error: Not Found`)
   );
 };
