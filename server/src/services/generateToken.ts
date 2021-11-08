@@ -5,12 +5,12 @@ export default (tokenType : Token, payload: IPayload, secretKey: string): string
   let jwtOption: IJwtOption;
 
   switch(tokenType) {
-    case TokenType.REFRESH:
+    case Token.REFRESH:
       jwtOption = {
         expiresIn: '1y'
       };
       break;
-    case TokenType.ACCESS:
+    case Token.ACCESS:
       jwtOption = {
         expiresIn: '15m'
       }
