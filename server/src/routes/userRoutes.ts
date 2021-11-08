@@ -20,3 +20,5 @@ router.post('login', async (req: Request, res: Response, next: NextFunction) => 
     return next(err);
   }
 });
+
+export default router;
