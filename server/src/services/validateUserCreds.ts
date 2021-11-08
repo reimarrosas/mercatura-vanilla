@@ -9,6 +9,6 @@ export default async <T extends Object>(user: T, validator: joi.AnySchema): Prom
 
     return value;
   } catch (err: any) {
-    throw new HttpError(400, 'User Validation Error', err.message, err.stack);
+    throw new HttpError(400, 'Object Validation Error', err.message, err.stack);
   }
 }
