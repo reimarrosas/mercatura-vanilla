@@ -5,7 +5,6 @@ import userValidator from "./schemaValidators/userValidator";
 export default async (user: IUser): Promise<Maybe<IHttpError>> => {
   try {
     const value = await userValidator.validateAsync(user);
-    console.log(value);
   } catch (err: any) {
     return new HttpError(400, 'User Validation Error', err.message, err.stack);
   }
