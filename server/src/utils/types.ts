@@ -17,6 +17,7 @@ export enum Token {
 }
 
 export interface IUser {
+  id?: number;
   name?: string;
   email: string;
   password: string;
