@@ -1,8 +1,8 @@
 import db from '../database/init';
-import HttpError from "../utils/httpError";
-import { IUser, Maybe } from "../utils/types";
+import HttpError from '../utils/httpError';
+import { IHttpError, IUser, Maybe } from "../utils/types";
 
-export async function createUser(user: IUser): Promise<Maybe<HttpError>> {
+export async function createUser(user: IUser): Promise<Maybe<IHttpError>> {
   try {
     await db.none(`
       INSERT INTO USERS (NAME, EMAIL, PASSWORD)
