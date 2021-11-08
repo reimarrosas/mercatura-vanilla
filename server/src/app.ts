@@ -4,6 +4,7 @@ dotenv.config();
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 
@@ -21,3 +22,5 @@ app.get('/', (_req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`);
 });
+
+app.use('/api/users', userRoutes);
