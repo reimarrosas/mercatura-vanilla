@@ -12,9 +12,9 @@ router.post('/signup', async (req: Request, res: Response, next: NextFunction) =
   const credentials: IUser = req.body;
 
   try {
-    await validateUserCreds(credentials)
-    await checkForExistingUser(credentials);
-    const hashedUser: IUser = await hashPassword(credentials);
+    const validatedUser: IUser = await validateUserCreds(credentials)
+    await checkForExistingUser(validatedUser);
+    const hashedUser: IUser = await hashPassword(validatedUser);
     await createUser(hashedUser);
   } catch (err: any) {
     return next(err);
