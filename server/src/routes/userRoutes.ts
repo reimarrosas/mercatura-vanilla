@@ -8,7 +8,7 @@ import { IUser } from '../utils/types';
 
 const router = express.Router();
 
-router.post('login', async (req: Request, res: Response, next: NextFunction) => {
+router.post('signup', async (req: Request, res: Response, next: NextFunction) => {
   const credentials: IUser = req.body;
   try {
     errorThrower(validateUserCreds(credentials));
