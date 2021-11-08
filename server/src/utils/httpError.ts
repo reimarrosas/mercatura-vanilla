@@ -1,6 +1,4 @@
-export interface IHttpError extends Error {
-  statusCode: number;
-}
+import { IHttpError } from "./types";
 export default class HttpError implements IHttpError {
   statusCode: number;
   name: string;
