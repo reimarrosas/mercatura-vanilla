@@ -1,17 +1,23 @@
 import { searchUserByEmail } from "../controllers/userController";
 import HttpError from "../utils/httpError";
-import isNothing from "../utils/isNothing";
-import { IUser } from "../utils/types";
+import { IUser, Maybe, UserExistenceRoute } from "../utils/types";
 
-export default async (user: IUser): Promise<void> => {
-  const id = await searchUserByEmail(user);
+export default async (user: IUser, routeType: UserExistenceRoute): Promise<Maybe<IUser>> => {
+  const queriedUser = await searchUserByEmail(user);
 
-  if (!isNothing(id)) {
+  if (queriedUser?.user_email && routeType === UserExistenceRoute.SIGNUP) {
     throw new HttpError(
-      409,
+      406,
       'User Already Exists',
-      `The desired user email, ${user.email}, already exists`,
-      'pg-promise\n=> searchUserByEmail\n=> checkForExistingUser'
+      `The desired user email, ${user.user_email}, already exists.`
+    );
+  } else if (!queriedUser?.user_email && routeType === UserExistenceRoute.LOGIN) {
+    throw new HttpError(
+      406,
+      'User Does Not Exist',
+      `The desired user, ${user.user_email}, does not yet exist.`
     );
   }
+
+  return queriedUser;
 }
