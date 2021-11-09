@@ -46,9 +46,16 @@ router.post('/login', async (req: Request, res: Response, next: NextFunction) =>
     res.cookie('Auth', token, {
       secure: process.env['NODE_ENV'] === 'production',
       httpOnly: true,
-      signed: true
-    }).status(201)
-    .send({ message: 'Login successful.' });
+      signed: true,
+    })
+    .status(201)
+    .send({
+      message: 'Login successful.',
+      user: {
+        id: queryResult?.user_id,
+        email: queryResult?.user_email
+      }
+    });
   } catch (err: any) {
     return next(err);
   }
