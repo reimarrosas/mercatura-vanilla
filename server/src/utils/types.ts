@@ -7,7 +7,7 @@ export interface IJwtOption {
 }
 
 export interface IPayload {
-  userID: number;
+  userID?: string;
   userEmail: string;
 }
 
@@ -16,11 +16,16 @@ export enum Token {
   ACCESS = 'ACCESS'
 }
 
+export enum UserExistenceRoute {
+  LOGIN = 'LOGIN',
+  SIGNUP = 'SIGNUP'
+}
+
 export interface IUser {
-  id?: string;
-  name?: string;
-  email: string;
-  password: string;
+  user_id?: string;
+  user_name?: string;
+  user_email: string;
+  user_password: string;
 }
 
 export type Nothing = undefined | null;
