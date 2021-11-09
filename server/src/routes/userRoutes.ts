@@ -53,6 +53,7 @@ router.post('/login', async (req: Request, res: Response, next: NextFunction) =>
       message: 'Login successful.',
       user: {
         id: queryResult?.user_id,
+        name: queryResult?.user_name,
         email: queryResult?.user_email
       }
     });
