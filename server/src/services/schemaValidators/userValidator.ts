@@ -1,15 +1,15 @@
 import joi from 'joi';
 
 export default joi.object({
-  name: joi.string()
+  user_name: joi.string()
             .trim()
             .min(1)
             .required(),
-  email: joi.string()
+  user_email: joi.string()
             .trim()
             .email()
             .required(),
-  password: joi.string()
+  user_password: joi.string()
                 .trim()
                 .min(6)
                 .required()
