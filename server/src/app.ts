@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 
 import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
+import productRoutes from './routes/productRoutes';
 import notFoundHandler from './handlers/notFoundHandler';
 import errorHandler from './handlers/errorHandler';
 
@@ -32,5 +33,6 @@ app.listen(PORT, () => {
 
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
