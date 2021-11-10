@@ -124,10 +124,11 @@ a:visited {
   top: 0;
 
   overflow-y: scroll;
-  padding: 1.5em;
 
+  padding: 1.5em;
   height: 100vh;
   width: clamp(280px, 25vw, 500px);
+  z-index: 1000;
 
   background-color: #fff;
   transition: right ease-in 300ms;
