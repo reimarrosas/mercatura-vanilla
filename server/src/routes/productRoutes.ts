@@ -1,8 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { countProductQueryResult, searchProductBySimilarity } from '../controllers/productController';
-import queryParamValidator from '../services/schemaValidators/queryParamValidator';
+import queryParamValidator from '../services/schemaValidators/productQueryValidator';
 import validateObject from '../services/validateObject';
-import HttpError from '../utils/httpError';
 
 const router = express.Router();
 
