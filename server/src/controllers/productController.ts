@@ -3,12 +3,8 @@ import db from '../database/init';
 import controllerError from '../utils/controllerError';
 
 export async function countProductQueryResult(searchQuery: string) {
-  let res: { count: string } = {
-    count: ""
-  };
-  
   try {
-    res = await db.one(`
+    return await db.one(`
       SELECT COUNT(*)
       FROM PRODUCTS
       WHERE PRODUCT_NAME %> $1
@@ -16,14 +12,11 @@ export async function countProductQueryResult(searchQuery: string) {
   } catch (err: any) {
     controllerError(err);
   }
-
-  return res;
 }
 
 export async function searchProductBySimilarity(searchQuery: string, limit: number, offset: number) {
-  let res;
   try {
-    res = await db.manyOrNone(`
+    return await db.manyOrNone(`
       SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_IMAGE, PRODUCT_PRICE
       FROM PRODUCTS
       WHERE PRODUCT_NAME %> $<searchQuery>
@@ -34,6 +27,4 @@ export async function searchProductBySimilarity(searchQuery: string, limit: numb
   } catch (err: any) {
     controllerError(err);
   }
-
-  return res;
 } 
