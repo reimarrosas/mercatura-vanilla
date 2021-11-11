@@ -49,4 +49,21 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   });
 });
 
+router.patch('/:id/:sentiment', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id, sentiment } = await validateObject(
+      { id: req.params.id, sentiment: req.params.sentiment },
+      commentQueryValidator
+    );
+
+    await updateCommentLikeOrDislike(parseInt(id), sentiment);
+  } catch (err: any) {
+    return next(err);
+  }
+
+  res.send({
+    message: `Sentiment ${req.params.sentiment} updated.`
+  })
+});
+
 export default router;
