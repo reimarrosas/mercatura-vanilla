@@ -7,7 +7,7 @@ export async function searchCommentsByProductID(id: number, limit: number, offse
       SELECT COMMENT_ID, COMMENT_CONTENT, COMMENT_LIKES, COMMENT_DISLIKES, USER_NAME
       FROM COMMENTS JOIN USERS ON COMMENTS.USER_ID = USERS.USER_ID
       WHERE PRODUCT_ID = $<id>
-      ORDER BY UPDATED_AT
+      ORDER BY COMMENTS.UPDATED_AT
       LIMIT $<limit>
       OFFSET $<offset>;
     `, { id, limit, offset });
