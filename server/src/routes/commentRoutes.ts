@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { searchCommentsByProductID } from '../controllers/commentController';
+import { addComment, searchCommentsByProductID, updateCommentContent, updateCommentLikeOrDislike } from '../controllers/commentController';
 import commentQueryValidator from '../services/schemaValidators/commentQueryValidator';
 import validateObject from '../services/validateObject';
 
@@ -29,6 +29,24 @@ router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
   res.send({
     queryResult
   })
+});
+
+router.post('/', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const {
+      userId,
+      productId,
+      content
+    } = await validateObject(req.body, commentQueryValidator);
+
+    await addComment(parseInt(userId), parseInt(productId), content);
+  } catch (err: any) {
+    return next(err);
+  }
+
+  res.status(201).send({
+    message: 'Comment created.'
+  });
 });
 
 export default router;
