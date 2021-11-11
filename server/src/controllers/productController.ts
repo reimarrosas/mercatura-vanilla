@@ -1,4 +1,3 @@
-import pg from 'pg-promise';
 import db from '../database/init';
 import controllerError from '../utils/controllerError';
 
