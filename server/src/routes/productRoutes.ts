@@ -1,14 +1,22 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { countProductQueryResult, searchProductBySimilarity } from '../controllers/productController';
+import queryParamValidator from '../services/schemaValidators/queryParamValidator';
+import validateObject from '../services/validateObject';
+import HttpError from '../utils/httpError';
 
 const router = express.Router();
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
-  const { search, limit, offset, recount } = req.query;
+  let query;
+  try {
+    query = await validateObject(req.query, queryParamValidator);
+  } catch (err: any) {
+    return next(err);
+  }
 
-  const searchQuery = search?.toString() ?? '';
-  const [recordNum, pageNum] = [limit, offset].map(Number);
-  const isRecount = recount === 'true';
+  const searchQuery = query.search?.toString() ?? '';
+  const [recordNum, pageNum] = [query.limit, query.offset].map(Number);
+  const isRecount = query.recount === 'true';
 
   let count, queryResult;
   try {
