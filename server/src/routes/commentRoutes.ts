@@ -66,4 +66,21 @@ router.patch('/:id/:sentiment', async (req: Request, res: Response, next: NextFu
   })
 });
 
+router.patch('/:id', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id, content } = await validateObject(
+      { id: req.params.id, content: req.body.content },
+      commentQueryValidator
+    );
+
+    await updateCommentContent(parseInt(id), content);
+  } catch (err: any) {
+    return next(err);
+  }
+
+  res.send({
+    message: `Content for comment ${req.params.id} updated.`
+  });
+});
+
 export default router;
