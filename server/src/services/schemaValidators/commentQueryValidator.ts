@@ -3,12 +3,15 @@ import joi from 'joi';
 const numberRegex = new RegExp('^[0-9]+$');
 
 export default joi.object({
-  id: joi.number()
-          .min(1),
-  userId: joi.number()
-              .min(1),
-  productId: joi.number()
-                .min(1),
+  id: joi.string()
+          .trim()
+          .pattern(numberRegex),
+  userId: joi.string()
+              .trim()
+              .pattern(numberRegex),
+  productId: joi.string()
+                .trim()
+                .pattern(numberRegex),
   content: joi.string()
                 .trim()
                 .min(1),
