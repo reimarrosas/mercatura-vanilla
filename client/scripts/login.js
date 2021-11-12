@@ -17,4 +17,10 @@
       }
     });
   });
+
+  const loginForm = document.querySelector('.login-form');
+  loginForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    fetch
+  });
 })();
