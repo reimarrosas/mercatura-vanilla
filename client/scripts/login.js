@@ -18,7 +18,7 @@
     });
   });
 
-  const userEndpoint = 'http://localhost:1200/api/users'
+  const userEndpoint =  `${window.sessionStorage.getItem('baseApiEndpoint')}/api/users`;
 
   const loginForm = document.querySelector('.login-form');
   loginForm.addEventListener('submit', async (evt) => {
@@ -28,8 +28,10 @@
 
     const response = await fetchPost(`${userEndpoint}/login`, data);
     if (response.status === 200) {
+      const userCreds = await response.json();
+
       window.sessionStorage.setItem('isLoggedIn', 'true');
-      window.sessionStorage.setItem('user', JSON.stringify(await response.json().user));
+      window.sessionStorage.setItem('user', JSON.stringify(await userCreds.user));
       window.location.replace(window.sessionStorage.getItem('prevUrl'));
     } else {
       console.error(response.status, await response.json());
