@@ -4,7 +4,8 @@ import { IUser, Maybe } from '../utils/types';
 
 export default async (dbUser: Maybe<IUser>, passedUser: IUser): Promise<void> => {
   try {
-    dbUser && await argon2.verify(dbUser.user_password, passedUser.user_password);
+    const res = dbUser && await argon2.verify(dbUser.user_password, passedUser.user_password);
+    if (!res) throw new Error();
   } catch (err: any) {
     throw new HttpError(
       409,

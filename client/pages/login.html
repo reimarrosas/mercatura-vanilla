@@ -33,7 +33,7 @@
       </form>
       <div class="header-group">
         <a href="./login.html" class="local-link login-link">Login</a>
-        <a href="/" class="local-link logout-link">Logout</a>
+        <a href="javascript:window.location.reload(true)" class="local-link logout-link">Logout</a>
         <button class="clear-button">
           <img src="../resources/images/shopping_cart.svg" alt="Shopping Cart Icon." />
         </button>
@@ -79,13 +79,13 @@
         <div class="form-group">
           <label for="login-email" class="login-form__label form__label">Enter your email: </label>
           <br>
-          <input type="email" name="login-email" id="login-email" placeholder="Enter your email..."
+          <input type="email" name="user_email" id="login-email" placeholder="Enter your email..."
             aria-label="Login Email" required>
         </div>
         <div class="form-group">
           <label for="login-pw" class="login-form__label form__label">Enter your password: </label>
           <br>
-          <input type="password" name="login-pw" id="login-pw" placeholder="Enter your password..."
+          <input type="password" name="user_password" id="login-pw" placeholder="Enter your password..."
             aria-label="Login Password" required>
         </div>
         <input class="btn" type="submit" value="Login">
@@ -98,30 +98,30 @@
       <h1 class="signup__title">Signup</h1>
       <form action="" class="login-page__form signup-form form">
         <div class="form-group">
-          <label for="signup-name" class="signup-form__label form__label">Enter your email: </label>
+          <label for="signup-name" class="signup-form__label form__label">Enter your name: </label>
           <br>
-          <input type="text" name="signup-name" id="signup-name" placeholder="John Smith" aria-label="Signup Email"
+          <input type="text" name="user_name" id="signup-name" placeholder="John Smith" aria-label="Signup Name"
             required>
         </div>
         <div class="form-group">
           <label for="signup-email" class="signup-form__label form__label">Enter your email: </label>
           <br>
-          <input type="email" name="signup-email" id="signup-email" placeholder="someone@example.com"
+          <input type="email" name="user_email" id="signup-email" placeholder="someone@example.com"
             aria-label="Signup Email" required>
         </div>
         <div class="form-group">
           <label for="signup-pw" class="signup-form__label form__label">Enter your password: </label>
           <br>
-          <input type="password" name="signup-pw" id="signup-pw" placeholder="Enter your password..."
+          <input type="password" name="user_password" id="signup-pw" placeholder="Enter your password..."
             aria-label="Signup Password" required minlength="6">
         </div>
         <div class="form-group">
           <label for="signup-pw" class="signup-form__label form__label">Confirm your password: </label>
           <br>
-          <input type="password" name="confirm-signup-pw" id="confirm-signup-pw" placeholder="Confirm your password..."
+          <input type="password" id="confirm-signup-pw" placeholder="Confirm your password..."
             aria-label="Confirm Signup Password" required>
         </div>
-        <input class="btn" type="submit" value="Login">
+        <input class="btn" type="submit" value="Sign up">
       </form>
     </section>
   </main>

@@ -47,8 +47,9 @@ router.post('/login', async (req: Request, res: Response, next: NextFunction) =>
       secure: process.env['NODE_ENV'] === 'production',
       httpOnly: true,
       signed: true,
+      sameSite: 'strict'
     })
-    .status(201)
+    .status(200)
     .send({
       message: 'Login successful.',
       user: {

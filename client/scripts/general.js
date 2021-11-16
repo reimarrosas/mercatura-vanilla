@@ -26,4 +26,14 @@ window.addEventListener('load', () => {
     cart.classList.add("cart-toggle");
   });
 
+  const loginBtn = document.querySelector('.login-link');
+  loginBtn.addEventListener('click', () => {
+    window.sessionStorage.setItem('prevUrl', window.location.href);
+  });
+  
+  const logoutBtn = document.querySelector('.logout-link');
+  logoutBtn.addEventListener('click', () => {
+    window.sessionStorage.removeItem('isLoggedIn');
+    window.sessionStorage.removeItem('user');
+  });
 })();
