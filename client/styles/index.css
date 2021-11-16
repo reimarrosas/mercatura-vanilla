@@ -48,10 +48,20 @@
 }
 
 .categories__card {
-  min-width: 300px;
-  min-height: 300px;
+  flex-basis: 300px;
+  height: 300px;
   text-align: center;
 
   border: 2px solid var(--main-color);
   border-radius: 10px;
+}
+
+.container__img {
+  width: 100%;
+  height: auto;
+}
+
+.container__img > img {
+  width: 100%;
+  height: auto;
 }
