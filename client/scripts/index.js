@@ -9,9 +9,16 @@ const fetchCategories = async (relativeUrl) => {
 
 window.onload = async function() {
   const cardList = document.querySelector('.categories__card-list');
-  const response = await fetchCategories('api/categories')
-  const responseArr = await response.json();
-  const fst4Categories = [...await responseArr.slice(0, 4)];
+  const categories = window.localStorage.getItem('categories');
+  let fst4Categories;
+  if (categories) {
+    fst4Categories = [...categories.slice(0, 4)];
+  } else {
+    const response = await fetchCategories('api/categories')
+    const responseArr = await response.json();
+    window.localStorage.setItem('Categories', JSON.stringify(responseArr));
+    fst4Categories = [...await responseArr.slice(0, 4)];
+  }
   populateCategoryList(fst4Categories, cardList);
 };
 
