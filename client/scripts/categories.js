@@ -42,7 +42,7 @@ const fetchCategories = async () => {
   const anchors = document.querySelectorAll('.categories__list-item > a');
   anchors.forEach((anchor, ind) => {
     anchor.addEventListener('click', () => {
-      window.localStorage.setItem('selectedCategory', JSON.stringify(categories[ind]));
+      window.sessionStorage.setItem('selectedCategory', JSON.stringify(categories[ind]));
     });
   })
 })();
