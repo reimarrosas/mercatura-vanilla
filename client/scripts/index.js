@@ -1,7 +1,7 @@
 "use strict";
 
 const fetchCategories = async (relativeUrl) => {
-  const fullUrl = `${window.sessionStorage.getItem('baseApiEndpoint')}/${relativeUrl}`
+  const fullUrl = `${window.localStorage.getItem('baseApiEndpoint')}/${relativeUrl}`
   const response = await fetch(fullUrl);
 
   return response;
@@ -9,14 +9,15 @@ const fetchCategories = async (relativeUrl) => {
 
 window.onload = async function() {
   const cardList = document.querySelector('.categories__card-list');
-  const categories = window.localStorage.getItem('categories');
+  const categoryString = window.localStorage.getItem('categories');
   let fst4Categories;
-  if (categories) {
+  if (categoryString) {
+    const categories = await JSON.parse(categoryString);
     fst4Categories = [...categories.slice(0, 4)];
   } else {
     const response = await fetchCategories('api/categories')
     const responseArr = await response.json();
-    window.localStorage.setItem('Categories', JSON.stringify(responseArr));
+    window.localStorage.setItem('categories', JSON.stringify(responseArr));
     fst4Categories = [...await responseArr.slice(0, 4)];
   }
   populateCategoryList(fst4Categories, cardList);

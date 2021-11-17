@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mercatura is an E-Commerce App that primarily sells everyday products.">
+  <meta name="keywords" content="E-Commerce, Store, Shop, Home">
+  <!-- Sanitize CSS Reset -->
+  <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+  <!-- Sanitize CSS Forms Reset -->
+  <link href="https://unpkg.com/sanitize.css/forms.css" rel="stylesheet" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../styles/categories.css">
+  <title>Mercatura | Categories</title>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="mercatura__header">
+    <div class="container__limiter container__header">
+      <div class="header-group">
+        <nav class="mercatura__main"></nav>
+        <a href="../" class="mercatura__title--link">
+          <h1 class="mercatura__title">Mercatura</h1>
+        </a>
+      </div>
+      <form action="" class="mercatura__search">
+        <input type="text" name="search_query" id="search_query" placeholder="Search..." />
+        <input type="submit" value="submit" style="display: none" />
+      </form>
+      <div class="header-group">
+        <a href="./login.html" class="local-link login-link">Login</a>
+        <a href="javascript:window.location.reload(true)" class="local-link logout-link">Logout</a>
+        <button class="clear-button">
+          <img src="../resources/images/shopping_cart.svg" alt="Shopping Cart Icon." />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart -->
+  <section id="cart" class="cart">
+    <button class="clear-button">
+      <img src="../resources/images/close_button.svg" alt="Close button.">
+    </button>
+    <h1 class="cart__title">Your Cart</h1>
+    <ul class="cart__item-list">
+      <li class="cart__item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, corporis?</li>
+      <li class="cart__item">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, praesentium!</li>
+      <li class="cart__item">Lore ipsum dolor sit amet consectetur adipisicing elit. Odio, nesciunt.</li>
+    </ul>
+    <div class="cart__total--container">
+      <span class="cart__total">Your total : $ <span class="cart__price"></span></span>
+    </div>
+    <div class="cart__action-group">
+      <a href="./pages/checkout.html" class="cart__checkout-link">
+        <button class="cart__action cart__checkout">
+          Checkout
+        </button>
+      </a>
+      <button class="cart__action cart__clear">
+        Clear Cart
+      </button>
+    </div>
+  </section>
+
+  <!-- Main Section -->
+  <main class="categories__main container__limiter">
+    <h1 class="categories__title">Categories</h1>
+    <ul class="categories__list">
+    </ul>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mercatura__footer">
+    <div class="container__limiter container__footer">
+      <address class="mercatura__address">
+        <a href="mailto:mercatura@example.com">mercatura@example.com</a><br />
+        <a href="tel:+15555555555">+1 (555) 555 - 5555</a>
+        <p class="mercatura__mailing-address">
+          123 Example Rd.<br />
+          Example, Montreal<br />
+          QC, Canada, H1A 0A1
+        </p>
+      </address>
+      <small class="footer__copyright">&copy; 2021 -
+        <a href="https://github.com/reimarrosas" class="footer__github" target="_blank">
+          Reimar Rosas
+        </a>
+      </small>
+    </div>
+  </footer>
+
+</body>
+
+<script src="../scripts/general.js"></script>
+<script src="../scripts/categories.js"></script>
+
+</html>

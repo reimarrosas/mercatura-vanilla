@@ -18,7 +18,7 @@
     });
   });
 
-  const userEndpoint =  `${window.sessionStorage.getItem('baseApiEndpoint')}/api/users`;
+  const userEndpoint =  `${window.localStorage.getItem('baseApiEndpoint')}/api/users`;
 
   const loginForm = document.querySelector('.login-form');
   loginForm.addEventListener('submit', async (evt) => {

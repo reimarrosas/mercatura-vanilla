@@ -14,8 +14,8 @@ window.addEventListener('load', () => {
 });
 
 (function () {
-  if (window.sessionStorage.getItem('baseApiEndpoint') === null) {
-    window.sessionStorage.setItem('baseApiEndpoint', 'http://localhost:1200');
+  if (window.localStorage.getItem('baseApiEndpoint') === null) {
+    window.localStorage.setItem('baseApiEndpoint', 'http://localhost:1200');
   }
 
   const cart = document.querySelector("#cart");

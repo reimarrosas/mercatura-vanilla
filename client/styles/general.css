@@ -8,6 +8,7 @@
   --color-light: #f6eef1;
   --color-hl: #605c4e;
   --color-dark: #2b2b2b;
+  font-size: clamp(0.8rem, 2vmin, 1.5rem);
 }
 
 *,
@@ -21,7 +22,6 @@
 body {
   background-color: var(--bg-color);
   color: var(--color-dark);
-  font-size: clamp(0.8rem, 2vmin, 1.5rem);
 }
 
 ul {
