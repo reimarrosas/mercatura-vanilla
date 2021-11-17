@@ -26,7 +26,7 @@ const fetchCategories = async () => {
     const listItem = document.createElement('li');
     listItem.classList.add('categories__list-item')
     listItem.innerHTML = `
-    <a href="./searchResult.html">
+    <a href="./query.html">
       <div class="container__img">
         <img src="${category.category_image}" alt="${category.category_name}." />
       </div>
