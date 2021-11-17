@@ -32,3 +32,12 @@
 .container__img > img {
   width: 100%;
 }
+
+@media screen and (max-width: 514px) {
+  .categories__list-item > a {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
