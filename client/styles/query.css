@@ -1,0 +1,28 @@
+@import url(./general.css);
+
+.query__selected-category {
+  border: 1px solid var(--main-color);
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  margin: 2em 1em;
+}
+
+.container__img {
+  max-width: 200px;
+}
+
+.container__img > img {
+  width: 100%;
+}
+
+@media screen and (max-width: 460px) {
+  .query__selected-category {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container__img {
+    margin: 0 auto;
+  }
+}
