@@ -6,7 +6,7 @@ const fetchProducts= async ({categoryName, searchQuery, limit, offset, recount})
   const apiEndpoint = `${window.localStorage.getItem('baseApiEndpoint')}` + 
                       `/api/products/${categoryName ?? ''}` + 
                       `?${searchQuery ? 'search=' + searchQuery : ''}` + 
-                      `limit=${limit}&offset=${offset}&recount=${recount}`;
+                      `&limit=${limit}&offset=${offset}&recount=${recount}`;
   return await fetch(apiEndpoint);
 }
 
@@ -99,7 +99,7 @@ const setupProducts = async ({ categoryName, searchQuery, limit, offset, recount
     recount
   });
   const jsonResponse = await products.json();
-  const productList = jsonResponse.result;
+  const productList = jsonResponse.queryResult;
   count = count ?? Math.ceil(parseInt(jsonResponse.count) / 15) - 1;
   productList.forEach(product => {
     generateProducts(product, listElement);

@@ -32,14 +32,14 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 
   res.send({
     count: count ?? -1,
-    queryResult
+    result: queryResult
   });
 });
 
 router.get('/:category', async (req: Request, res: Response, next: NextFunction) => {
   const category: string = req.params.category;
   const { limit, offset, recount } = req.query;
-  let count, result;
+  let count, queryResult;
   try {
     const validatedParams = await validateObject({ category, limit, offset, recount }, categoryQueryValidator);
 
@@ -47,7 +47,7 @@ router.get('/:category', async (req: Request, res: Response, next: NextFunction)
       count = (await countProductCategory(validatedParams.category)).count;
     }
 
-    result = await searchProductByCategory(
+    queryResult = await searchProductByCategory(
       validatedParams.category,
       parseInt(validatedParams.limit as string),
       parseInt(validatedParams.offset as string)
@@ -58,7 +58,7 @@ router.get('/:category', async (req: Request, res: Response, next: NextFunction)
 
   res.send({
     count: count ?? -1,
-    result
+    result: queryResult
   });
 });
 

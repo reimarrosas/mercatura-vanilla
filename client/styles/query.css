@@ -57,6 +57,7 @@
 
 .container__img--p > img {
   width: 100%;
+  max-height: 100%;
 }
 
 .content-grp--p {

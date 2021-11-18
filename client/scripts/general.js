@@ -59,3 +59,12 @@ screenCheck(titleMediaQuery, siteTitle);
 titleMediaQuery.addEventListener('change', () => {
   screenCheck(titleMediaQuery, siteTitle);
 });
+
+const searchForm = document.querySelector('.mercatura__search');
+searchForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const data = new FormData(searchForm);
+  data.forEach((value, key) => (data[key] = value));
+  window.sessionStorage.setItem('searchQuery', data.search_query);
+  window.location.replace('/pages/query.html');
+});
