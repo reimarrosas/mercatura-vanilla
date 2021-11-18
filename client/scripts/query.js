@@ -23,42 +23,38 @@ const setupCategoryCard = (category, element) => {
 }
 
 const setupPaginationLinks = (number, start = 1) => {
-  let pages = [start, start + 1, start + 2, number - 1, number];
-
-  console.log(pages);
+  let pages = [start, start + 1, '...', number - 1, number];
 
   if (number < 5) {
     pages = Array(number === 0 ? 1 : number).fill(0).map((_, ind) => start + ind);
+  } else if (number - start <= 5) {
+    pages = Array(5)
+              .fill(0)
+              .map((_, ind) => number - ind)
+              .reverse();
   }
 
   const paginationLinkContainer = document.querySelector('.paginate__links');
   const paginationLinks = document.querySelectorAll('.paginate__links > a');
   if (paginationLinks.length === 0) {
-    pages.forEach((el, ind) => {
+    pages.forEach(page => {
       let listItem;
       const anchor = document.createElement('a')
       anchor.setAttribute('role', 'button');
       listItem = document.createElement('li');
       listItem.classList.add('paginate__page');
-  
-      if (ind === 0 || ind === 1) {
-        listItem.classList.add('moving');
-      }
-  
-      if (ind === 2 && number > 5) {
-        listItem.textContent = '...';
-      } else {
-        listItem.textContent = el;
-      }
-  
+      listItem.textContent = page;
       anchor.appendChild(listItem);
       paginationLinkContainer.appendChild(anchor);
     });
   } else {
     [...paginationLinks]
-      .filter(link => link.firstChild.textContent !== '...')
       .forEach((link, ind) => {
-        link.firstChild.textContent = pages[ind > 1 ? ind + 1 : ind];
+        if (pages[2] === '...') {
+          link.firstChild.textContent = ind === 2 ? '...' : pages[ind];
+        } else {
+          link.firstChild.textContent = pages[ind];
+        }
       });
   }
 }
@@ -114,7 +110,9 @@ const setupProducts = async ({ categoryName, searchQuery, limit, offset, recount
     category = await JSON.parse(selectedCategory);
     const categoryElement = document.querySelector('.query__selected-category');
     setupCategoryCard(category, categoryElement);
-  };
+  } else {
+    document.querySelector('.query__selected-category').setAttribute('style', 'display: none');
+  }
 
   const queryProducts = document.querySelector('.query__products');
   await setupProducts({
