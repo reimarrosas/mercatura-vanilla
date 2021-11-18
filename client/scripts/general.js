@@ -1,5 +1,9 @@
 "use strict";
 
+if (!window.location.href.includes('query.html')) {
+  window.sessionStorage.removeItem('searchQuery');
+}
+
 window.addEventListener("load", () => {
   const loginLink = document.querySelector(".login-link");
   const logoutLink = document.querySelector(".logout-link");
