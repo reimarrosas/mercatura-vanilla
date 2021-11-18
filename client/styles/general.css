@@ -29,6 +29,11 @@ ul {
   padding: 0;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+}
+
 a {
   cursor: pointer;
 }
@@ -76,6 +81,12 @@ a:visited {
 
 .btn__container {
   margin: 1rem 0;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* === Header Specific === */

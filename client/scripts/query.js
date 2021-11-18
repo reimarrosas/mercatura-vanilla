@@ -1,5 +1,7 @@
 "use strict";
 
+let count;
+
 const fetchProducts= async ({categoryName, searchQuery, limit, offset, recount}) => {
   const apiEndpoint = `${window.localStorage.getItem('baseApiEndpoint')}` + 
                       `/api/products/${categoryName ?? ''}` + 
@@ -22,27 +24,43 @@ const setupCategoryCard = (category, element) => {
 
 const setupPaginationLinks = (number, start = 1) => {
   let pages = [start, start + 1, start + 2, number - 1, number];
-  const paginationLinks = document.querySelector('.paginate__links');
-  pages.forEach((el, ind) => {
-    let listItem;
-    const anchor = document.createElement('a')
-    anchor.setAttribute('role', 'button');
-    listItem = document.createElement('li');
-    listItem.classList.add('paginate__page');
 
-    if (ind === 0 || ind === 1) {
-      listItem.classList.add('moving');
-    }
+  console.log(pages);
 
-    if (ind === 2 && number > 5) {
-      listItem.textContent = '...';
-    } else {
-      listItem.textContent = el;
-    }
+  if (number < 5) {
+    pages = Array(number === 0 ? 1 : number).fill(0).map((_, ind) => start + ind);
+  }
 
-    anchor.appendChild(listItem);
-    paginationLinks.appendChild(anchor);
-  });
+  const paginationLinkContainer = document.querySelector('.paginate__links');
+  const paginationLinks = document.querySelectorAll('.paginate__links > a');
+  if (paginationLinks.length === 0) {
+    pages.forEach((el, ind) => {
+      let listItem;
+      const anchor = document.createElement('a')
+      anchor.setAttribute('role', 'button');
+      listItem = document.createElement('li');
+      listItem.classList.add('paginate__page');
+  
+      if (ind === 0 || ind === 1) {
+        listItem.classList.add('moving');
+      }
+  
+      if (ind === 2 && number > 5) {
+        listItem.textContent = '...';
+      } else {
+        listItem.textContent = el;
+      }
+  
+      anchor.appendChild(listItem);
+      paginationLinkContainer.appendChild(anchor);
+    });
+  } else {
+    [...paginationLinks]
+      .filter(link => link.firstChild.textContent !== '...')
+      .forEach((link, ind) => {
+        link.firstChild.textContent = pages[ind > 1 ? ind + 1 : ind];
+      });
+  }
 }
 
 const generateProducts = async (product, listElement) => {
@@ -52,23 +70,24 @@ const generateProducts = async (product, listElement) => {
     product_price: price,
     product_image: image
   } = product;
-  const button = document.createElement('b');
-  button.classList.add('product__grp');
+  const anchor = document.createElement('a');
+  anchor.setAttribute('role', 'button');
+  anchor.classList.add('product__grp');
   const listItem = document.createElement('li');
   listItem.classList.add('product__listing');
   listItem.id = id;
   listItem.innerHTML = `
-    <div class="container__img">
+    <div class="container__img--p flex-center">
       <img src="${image}" alt="${pname}." />
     </div>
-    <div class="content-grp">
-      <h1 class="product__name">${pname.length > 25 ? pname.slice(0, 22) + '...' : pname}</h1>
-      <span class="product__price>$ ${price}</span>
+    <div class="content-grp--p flex-center">
+      <h1 class="product__name">${pname.length > 22 ? pname.slice(0, 19) + '...' : pname}</h1>
+      <span class="product__price">$ ${price}</span>
+      <button class="product__btn">Add to Cart</button>
     </div>
-    <button class="product__btn">Add to Cart</button>
   `;
-  button.appendChild(listItem);
-  listElement.appendChild(button);
+  anchor.appendChild(listItem);
+  listElement.appendChild(anchor);
 }
 
 const setupProducts = async ({ categoryName, searchQuery, limit, offset, recount, listElement}) => {
@@ -81,17 +100,10 @@ const setupProducts = async ({ categoryName, searchQuery, limit, offset, recount
   });
   const jsonResponse = await products.json();
   const productList = jsonResponse.result;
-  count = jsonResponse.count;
-  setupPaginationLinks(count);
+  count = count ?? Math.ceil(parseInt(jsonResponse.count) / 15) - 1;
   productList.forEach(product => {
     generateProducts(product, listElement);
   });
-}
-
-let count;
-
-const testFunc = (products) => {
-  console.log(products);
 }
 
 (async function () {
@@ -103,13 +115,35 @@ const testFunc = (products) => {
     const categoryElement = document.querySelector('.query__selected-category');
     setupCategoryCard(category, categoryElement);
   };
-  
+
+  const queryProducts = document.querySelector('.query__products');
   await setupProducts({
-    categoryName: category.category_name,
+    categoryName: category?.category_name,
     searchQuery: searchedQuery,
-    limit: 10,
+    limit: 15,
     offset: 0,
     recount: 'true',
-    listElement: document.querySelector('.query__products')
+    listElement: queryProducts
   });
+
+  setupPaginationLinks(count);
+
+  const paginateLinks = document.querySelectorAll('.paginate__links > a');
+  [...paginateLinks]
+    .filter(link => link.firstChild.textContent !== '...')
+    .forEach(link => {
+      link.addEventListener('click', async () => {
+        queryProducts.innerHTML = '';
+        const offset = parseInt(link.firstChild.textContent);
+        setupPaginationLinks(count, offset);
+        await setupProducts({
+          categoryName: category?.category_name,
+          searchQuery: searchedQuery,
+          limit: 15,
+          offset: offset * 15,
+          recount: 'false',
+          listElement: queryProducts
+        });
+      }, false)
+    })
 })();
