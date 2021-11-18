@@ -25,25 +25,32 @@ window.onload = async function() {
 
 const populateCategoryList = (categories, categoryList) => {
   categories.forEach(category => {
-    createCard(category.category_image, category.category_name, categoryList);
+    createCard(category, categoryList);
   })
   const viewMoreCard = document.createElement('li');
-  viewMoreCard.classList.add('categories__card');
+  viewMoreCard.classList.add('categories__card', 'flex-center', 'view-more');
   viewMoreCard.innerHTML = `
-    <a href="pages/categories.html" class="view__more">View More!</a>
+    <a href="pages/categories.html" class="view__more">View More!<span class="arrow">></span></a>
   `;
   categoryList.appendChild(viewMoreCard);
 }
 
-const createCard = (imgSrc, categoryName, listElement) => {
+const createCard = (category, listElement) => {
   const listItem = document.createElement('li');
-  listItem.classList.add('categories__card');
+  listItem.classList.add('categories__card', 'flex-center');
   listItem.innerHTML = `
     <div class="container__img">
-      <img src="${imgSrc}" alt="${categoryName}." />
+      <img src="${category.category_image}" alt="${category.category_name}." />
     </div>
-    <a href="" class="category__link">${categoryName}</a>
   `;
+  const anchor = document.createElement('a');
+  anchor.classList.add('category__link');
+  anchor.textContent = category.category_name;
+  anchor.addEventListener('click', () => {
+    window.sessionStorage.setItem('selectedCategory', JSON.stringify(category));
+    window.location.href = '/pages/query.html';
+  });
+  listItem.appendChild(anchor);
 
   listElement.appendChild(listItem);
 };

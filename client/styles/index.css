@@ -28,6 +28,10 @@
   width: 100%;
 }
 
+.btn--call-to-action {
+  border: 1px solid var(--main-color);
+}
+
 /* === Category Section === */
 
 .categories {
@@ -50,10 +54,21 @@
 .categories__card {
   flex-basis: 300px;
   height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
 
-  border: 2px solid var(--main-color);
+  padding: 1em;
+  border: 1px solid var(--main-color);
   border-radius: 10px;
+}
+
+.view-more {
+  justify-content: center;
+}
+
+.arrow {
+  margin-left: 0.5em;
 }
 
 .container__img {
