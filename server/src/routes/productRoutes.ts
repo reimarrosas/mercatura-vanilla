@@ -58,7 +58,7 @@ router.get('/:category', async (req: Request, res: Response, next: NextFunction)
 
   res.send({
     count: count ?? -1,
-    result: queryResult
+    queryResult
   });
 });
 
