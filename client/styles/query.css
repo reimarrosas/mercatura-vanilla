@@ -1,11 +1,16 @@
 @import url(./general.css);
 
+.query__main {
+  background-color: var(--color-light);
+  padding: 1em;
+}
+
 .query__selected-category {
   border: 1px solid var(--main-color);
   display: flex;
   gap: 1em;
   padding: 1em;
-  margin: 2em 1em;
+  margin-block: 2em;
 }
 
 .container__img {
@@ -16,7 +21,11 @@
   width: 100%;
 }
 
-@media screen and (max-width: 460px) {
+.product__name {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 480px) {
   .query__selected-category {
     flex-direction: column;
     text-align: center;

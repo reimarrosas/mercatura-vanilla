@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { countProductQueryResult, searchProductBySimilarity } from '../controllers/productController';
+import { countProductCategory, countProductQueryResult, searchProductByCategory, searchProductBySimilarity } from '../controllers/productController';
+import categoryQueryValidator from '../services/schemaValidators/categoryQueryValidator';
 import queryParamValidator from '../services/schemaValidators/productQueryValidator';
 import validateObject from '../services/validateObject';
 
@@ -32,6 +33,32 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   res.send({
     count: count ?? -1,
     queryResult
+  });
+});
+
+router.get('/:category', async (req: Request, res: Response, next: NextFunction) => {
+  const category: string = req.params.category;
+  const { limit, offset, recount } = req.query;
+  let count, result;
+  try {
+    const validatedParams = await validateObject({ category, limit, offset, recount }, categoryQueryValidator);
+
+    if (recount === 'true') {
+      count = (await countProductCategory(validatedParams.category)).count;
+    }
+
+    result = await searchProductByCategory(
+      validatedParams.category,
+      parseInt(validatedParams.limit as string),
+      parseInt(validatedParams.offset as string)
+    );
+  } catch (err: any) {
+    return next(err);
+  }
+
+  res.send({
+    count: count ?? -1,
+    result
   });
 });
 

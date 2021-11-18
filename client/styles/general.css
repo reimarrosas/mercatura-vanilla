@@ -8,7 +8,7 @@
   --color-light: #f6eef1;
   --color-hl: #605c4e;
   --color-dark: #2b2b2b;
-  font-size: clamp(0.8rem, 2vmin, 1.5rem);
+  font-size: clamp(1rem, 2vmin, 1.5rem);
 }
 
 *,
@@ -27,6 +27,10 @@ body {
 ul {
   list-style: none;
   padding: 0;
+}
+
+a {
+  cursor: pointer;
 }
 
 a:link,
