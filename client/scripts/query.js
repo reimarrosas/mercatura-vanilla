@@ -96,14 +96,14 @@ const setupCartList = (cartList) => {
   const reducedCart = reduceItems(cartList);
   cart.innerHTML = '';
   reducedCart.forEach(item => {
-    const { product, count } = item;
+    const { product } = item;
     const cartItem = document.createElement('li');
-    cartItem.classList.add('list__item');
+    cartItem.classList.add('cart__item', 'flex-center');
     cartItem.innerHTML = `
-      <div class="container__img--p">
+      <div class="container__img--c">
         <img src="${product.product_image}" alt="${product.product_name}">
       </div>
-      <h1 class="cart__title">${product.product_name}</h1>
+      <h1 class="cart__title">${product.product_name.length > 50 ? product.product_name.slice(0, 47) + '...' : product.product_name}</h1>
       <span class="cart__price">$ ${round2Digits(product.product_price).toFixed(2)}</span>
     `;
     cart.appendChild(cartItem);
