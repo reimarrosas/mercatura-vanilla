@@ -201,6 +201,7 @@ a:visited {
 
 .cart__action {
   padding: 0.8em 1.5em;
+  border: 1px solid var(--color-dark);
 }
 
 /* === Footer Specific === */

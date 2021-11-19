@@ -1,8 +1,57 @@
 "use strict";
 
+const round2Digits = (number) => Math.floor(number * 100) / 100;
+
 if (!window.location.href.includes('query.html')) {
   window.sessionStorage.removeItem('searchQuery');
 }
+
+if (!window.localStorage.getItem('cart')) {
+  window.localStorage.setItem('cart', JSON.stringify([]));
+}
+
+const reduceItems = (cartList) => {
+  return cartList.reduce((acc, cur) => {
+    const doubleProduct = acc.find(el => el.product.product_id === cur.product_id);
+    if (doubleProduct !== undefined) {
+      doubleProduct.count++;
+      return acc;
+    } else {
+      return [...acc, {
+        product: cur,
+        count: 1
+      }]
+    }
+  }, []);
+}
+
+(async function() {
+  const cartList = await JSON.parse(window.localStorage.getItem('cart'));
+  const cart = document.querySelector('.cart__item-list');
+  const reducedCart = reduceItems(cartList);
+  cart.innerHTML = '';
+  reducedCart.forEach(item => {
+    const { product, count } = item;
+    const cartItem = document.createElement('li');
+    cartItem.classList.add('list__item');
+    cartItem.innerHTML = `
+      <div class="container__img--p">
+        <img src="${product.product_image}" alt="${product.product_name}">
+      </div>
+      <h1 class="cart__title">${product.product_name}</h1>
+      <span class="cart__price">$ ${round2Digits(product.product_price).toFixed(2)}</span>
+      <div class="container__count">
+        <span class="up-arrow"></span>
+        <span class="count">${count}</span>
+        <span class="down-arrow"></span>
+      </div>
+    `;
+    cart.appendChild(cartItem);
+  });
+  const total = reducedCart.reduce((acc, cur) => (round2Digits(acc) + (round2Digits(cur.product.product_price) * cur.count)), 1)
+  const cartPrice = document.querySelector('.cart__total > .cart__price');
+  cartPrice.textContent = round2Digits(reducedCart.length === 0 ? 0 : total).toFixed(2);
+})();
 
 window.addEventListener("load", () => {
   const loginLink = document.querySelector(".login-link");
@@ -29,7 +78,6 @@ const cartClose = document.querySelector(".cart .clear-button");
 const cartOpen = document.querySelector("header button");
 
 cartClose.addEventListener("click", () => {
-  console.log("event hit");
   cart.classList.remove("cart-toggle");
 });
 cartOpen.addEventListener("click", () => {
@@ -72,3 +120,10 @@ searchForm.addEventListener('submit', (evt) => {
   window.sessionStorage.setItem('searchQuery', data.search_query);
   window.location.replace('/pages/query.html');
 });
+
+const clearButton = document.querySelector('.cart__clear');
+clearButton.addEventListener('click', () => {
+  window.localStorage.setItem('cart', JSON.stringify([]));
+  document.querySelector('.cart__total > .cart__price').textContent = (0).toFixed(2);
+  document.querySelector('.cart__item-list').innerHTML = '';
+})

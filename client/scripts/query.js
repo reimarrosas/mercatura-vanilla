@@ -1,5 +1,7 @@
 "use strict";
 
+const roundTo2 = (number) => Math.floor(number * 100) / 100;
+
 let count;
 
 const fetchProducts = async ({
@@ -74,6 +76,44 @@ const setupPaginationLinks = (number, start = 1) => {
   }
 };
 
+const reduceCartItems = (cartList) => {
+  return cartList.reduce((acc, cur) => {
+    const doubleProduct = acc.find(el => el.product.product_id === cur.product_id);
+    if (doubleProduct !== undefined) {
+      doubleProduct.count++;
+      return acc;
+    } else {
+      return [...acc, {
+        product: cur,
+        count: 1
+      }]
+    }
+  }, []);
+}
+
+const setupCartList = (cartList) => {
+  const cart = document.querySelector('.cart__item-list');
+  const reducedCart = reduceItems(cartList);
+  cart.innerHTML = '';
+  reducedCart.forEach(item => {
+    const { product, count } = item;
+    const cartItem = document.createElement('li');
+    cartItem.classList.add('list__item');
+    cartItem.innerHTML = `
+      <div class="container__img--p">
+        <img src="${product.product_image}" alt="${product.product_name}">
+      </div>
+      <h1 class="cart__title">${product.product_name}</h1>
+      <span class="cart__price">$ ${round2Digits(product.product_price).toFixed(2)}</span>
+    `;
+    cart.appendChild(cartItem);
+  });
+  console.log(reducedCart);
+  const total = reducedCart.reduce((acc, cur) => (round2Digits(acc) + (round2Digits(cur.product.product_price) * cur.count)), 1)
+  const cartPrice = document.querySelector('.cart__total > .cart__price');
+  cartPrice.textContent = round2Digits(total).toFixed(2);
+}
+
 const generateProducts = async (product, listElement) => {
   const {
     product_id: id,
@@ -91,14 +131,26 @@ const generateProducts = async (product, listElement) => {
     <div class="container__img--p flex-center">
       <img src="${image}" alt="${pname}." />
     </div>
-    <div class="content-grp--p flex-center">
-      <h1 class="product__name">${
-        pname.length > 22 ? pname.slice(0, 19) + "..." : pname
-      }</h1>
-      <span class="product__price">$ ${price}</span>
-      <button class="product__btn">Add to Cart</button>
-    </div>
   `;
+  const contentGrp = document.createElement('div');
+  contentGrp.classList.add('content-grp--p', 'flex-center');
+  contentGrp.innerHTML = `
+    <h1 class="product__name">${
+      pname.length > 20 ? pname.slice(0, 17) + "..." : pname
+    }</h1>
+    <span class="product__price">$ ${price}</span>
+  `;
+  const addToCart = document.createElement('button');
+  addToCart.classList.add('product__btn');
+  addToCart.textContent = 'Add to Cart';
+  addToCart.addEventListener('click', async () => {
+    const cartList = await JSON.parse(window.localStorage.getItem('cart'));
+    const newCartList = [...cartList, product];
+    window.localStorage.setItem('cart', JSON.stringify(newCartList));
+    setupCartList(newCartList);
+  });
+  contentGrp.appendChild(addToCart);
+  listItem.appendChild(contentGrp);
   anchor.appendChild(listItem);
   listElement.appendChild(anchor);
 };
@@ -126,7 +178,7 @@ const setupProducts = async ({
   });
 };
 
-const setupLinksAndProducts = async({
+const setupLinksAndProducts = async ({
   categoryName,
   searchQuery,
   limit,
@@ -135,7 +187,6 @@ const setupLinksAndProducts = async({
   listElement,
   start
 }) => {
-  setupPaginationLinks(count, start);
   await setupProducts({
     categoryName,
     searchQuery,
@@ -144,6 +195,7 @@ const setupLinksAndProducts = async({
     recount,
     listElement,
   });
+  setupPaginationLinks(count, start);
 };
 
 const setupArrowPagination = ({
@@ -209,16 +261,15 @@ const setupArrowPagination = ({
   }
 
   const queryProducts = document.querySelector(".query__products");
-  await setupProducts({
+
+  await setupLinksAndProducts({
     categoryName: category?.category_name,
     searchQuery: searchedQuery,
     limit: 15,
     offset: 0,
-    recount: "true",
-    listElement: queryProducts,
+    recount: 'true',
+    listElement: queryProducts
   });
-
-  setupPaginationLinks(count);
   setupArrowPagination({
     categoryName: category?.category_name,
     searchQuery: searchedQuery,
