@@ -65,7 +65,7 @@ window.addEventListener("load", () => {
 });
 
 if (window.localStorage.getItem("baseApiEndpoint") === null) {
-  window.localStorage.setItem("baseApiEndpoint", "http://localhost:1200");
+  window.localStorage.setItem("baseApiEndpoint", "http://mercatura.xyz:1200");
 }
 
 const cart = document.querySelector("#cart");
@@ -121,4 +121,4 @@ clearButton.addEventListener('click', () => {
   window.localStorage.setItem('cart', JSON.stringify([]));
   document.querySelector('.cart__total > .cart__price').textContent = (0).toFixed(2);
   document.querySelector('.cart__item-list').innerHTML = '';
-})
+});
