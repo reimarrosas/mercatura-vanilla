@@ -65,7 +65,7 @@ window.addEventListener("load", () => {
 });
 
 if (window.localStorage.getItem("baseApiEndpoint") === null) {
-  window.localStorage.setItem("baseApiEndpoint", "http://mercatura.xyz:1200");
+  window.localStorage.setItem("baseApiEndpoint", "https://api.mercatura.xyz");
 }
 
 const cart = document.querySelector("#cart");
