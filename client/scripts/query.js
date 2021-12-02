@@ -103,7 +103,7 @@ const setupCartList = (cartList) => {
       <div class="container__img--c">
         <img src="${product.product_image}" alt="${product.product_name}">
       </div>
-      <h1 class="cart__title">${product.product_name.length > 50 ? product.product_name.slice(0, 47) + '...' : product.product_name}</h1>
+      <h1 class="cart__item-title">${product.product_name.length > 50 ? product.product_name.slice(0, 47) + '...' : product.product_name}</h1>
       <span class="cart__price">$ ${round2Digits(product.product_price).toFixed(2)}</span>
     `;
     cart.appendChild(cartItem);
@@ -135,8 +135,7 @@ const generateProducts = async (product, listElement) => {
   const contentGrp = document.createElement('div');
   contentGrp.classList.add('content-grp--p', 'flex-center');
   contentGrp.innerHTML = `
-    <h1 class="product__name">${
-      pname.length > 20 ? pname.slice(0, 17) + "..." : pname
+    <h1 class="product__name">${pname.length > 20 ? pname.slice(0, 17) + "..." : pname
     }</h1>
     <span class="product__price">$ ${price}</span>
   `;

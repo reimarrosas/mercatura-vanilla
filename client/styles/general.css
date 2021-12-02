@@ -162,12 +162,6 @@ a:visited {
   padding: 0;
 }
 
-.cart__title {
-  text-align: center;
-  margin-block: 0.5em;
-  font-weight: 800;
-}
-
 .clear-button > img {
   width: 32px;
   height: 32px;
