@@ -46,6 +46,11 @@ const reduceItems = (cartList) => {
   const total = reducedCart.reduce((acc, cur) => (round2Digits(acc) + (round2Digits(cur.product.product_price) * cur.count)), 1)
   const cartPrice = document.querySelector('.cart__total > .cart__price');
   cartPrice.textContent = round2Digits(reducedCart.length === 0 ? 0 : total).toFixed(2);
+
+  const storedCart = window.localStorage.getItem("cart");
+  if ((await JSON.parse(storedCart)).length === 0) {
+    document.querySelector(".cart__checkout").setAttribute("disabled", true);
+  }
 })();
 
 window.addEventListener("load", () => {
@@ -121,4 +126,5 @@ clearButton.addEventListener('click', () => {
   window.localStorage.setItem('cart', JSON.stringify([]));
   document.querySelector('.cart__total > .cart__price').textContent = (0).toFixed(2);
   document.querySelector('.cart__item-list').innerHTML = '';
+  document.querySelector(".cart__checkout").setAttribute("disabled", true);
 });

@@ -183,6 +183,10 @@ a:visited {
   width: 100%;
 }
 
+.cart__title {
+  text-align: center;
+}
+
 .cart__item-title {
   font-size: 0.8rem;
   max-width: 35ch;
@@ -213,6 +217,12 @@ a:visited {
 .cart__action {
   padding: 0.8em 1.5em;
   border: 1px solid var(--color-dark);
+}
+
+.cart__checkout[disabled=true] {
+    cursor: default;
+    background-color: gray;
+    border: none;
 }
 
 /* === Footer Specific === */

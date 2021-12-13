@@ -1,0 +1,39 @@
+@import url(general.css);
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body > * {
+  flex: 0 0;
+}
+
+.checkout {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group +
+.form-group {
+    margin-top: 1.5em;
+}
+
+[type=submit] {
+    margin-inline: auto;
+}
+
+.undisplay {
+    display: none;
+}

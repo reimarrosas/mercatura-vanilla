@@ -147,6 +147,7 @@ const generateProducts = async (product, listElement) => {
     const newCartList = [...cartList, product];
     window.localStorage.setItem('cart', JSON.stringify(newCartList));
     setupCartList(newCartList);
+    document.querySelector(".cart__checkout").setAttribute("disabled", false);
   });
   contentGrp.appendChild(addToCart);
   listItem.appendChild(contentGrp);
