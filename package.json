@@ -1,0 +1,11 @@
+{
+  "name": "mercatura",
+  "version": "1.0.0",
+  "description": "Monorepo for mercatura frontend and api",
+  "repository": "git@github.com:reimarrosas/mercatura.git",
+  "author": "Reimar Rosas <reimarrosas0208@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "yarn --cwd server install"
+  }
+}
